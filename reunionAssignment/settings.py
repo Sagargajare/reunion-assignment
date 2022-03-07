@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'allauth.account',
     "dj_rest_auth",
     'rest_framework_simplejwt',
+    
 ]
 
 MIDDLEWARE = [
@@ -172,5 +173,12 @@ AUTHENTICATION_BACKENDS = (
 REST_AUTH_SERIALIZERS = {
     # Changed
     'USER_DETAILS_SERIALIZER': 'post.serializers.CustomUserDetailsSerializer',
+}
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ]
 }
 django_heroku.settings(locals())
