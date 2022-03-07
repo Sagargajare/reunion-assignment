@@ -1,1 +1,1 @@
-web: gunicorn reunionAssignment.wsgi
+web: gunicorn reunionAssignment.wsgi  --preload --workers 1
