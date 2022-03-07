@@ -147,7 +147,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-REST_USE_JWT = True
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 STATIC_URL = 'static/'
@@ -175,10 +175,10 @@ REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'post.serializers.CustomUserDetailsSerializer',
 }
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-    ]
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+    ),
 }
+REST_USE_JWT = True
+JWT_AUTH_COOKIE = 'my-app-auth'
 django_heroku.settings(locals())

@@ -1,6 +1,6 @@
 import requests
 from pprint import pprint
-url = 'https://backend-assignment-reunion.herokuapp.com/api/authenticate/'
+url = 'http://localhost:8000/api/authenticate/'
 myobj = {
     "email": "demouser@sagargajare.in",
     "password": "demouser"
@@ -12,7 +12,9 @@ pprint(x.json())
 token = x.json()['access_token']
 print(token)
 headers = {"content-type": "application/json; charset=UTF-8",
-           'Authorization': 'JWT {}'.format(token)}
-x = requests.get("https://backend-assignment-reunion.herokuapp.com/api/post/",
+           "Authorization": "Bearer {}".format(token),
+           "X-Auth-Token": token}
+print(headers)
+x = requests.get("http://localhost:8000/api/post",
                  headers=headers)
 pprint(x.json())
