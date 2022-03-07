@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     "dj_rest_auth",
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -145,7 +146,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
+REST_USE_JWT = True
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 STATIC_URL = 'static/'
