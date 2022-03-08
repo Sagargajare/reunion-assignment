@@ -4,6 +4,30 @@
 
 Build APIs for a social media platform in either NodeJS or Python. The API should support features like getting a user profile, follow a user, upload a post, delete a post, like a post, unlike a liked post, and comment on a post. Design the database schema and implement in PostgreSQL.
 
+**Using Token**
+```
+curl \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"email": "demouser@sagargajare.in", "password": "demouser"}' \
+  http://localhost:8000/api/authenticate
+```
+
+```javascript
+{'access_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ2NjcwOTIzLCJpYXQiOjE2NDY2NzA2MjMsImp0aSI6IjAzYzEzMGE2YmQ5ODQwN2M4MzUxNWQ5YjRlODIxNzlmIiwidXNlcl9pZCI6MX0._o2SrwPg8eXnR9ZQ77V6shx05LQOL2ShOrjg20kUKfw',
+ 'refresh_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0Njc1NzAyMywiaWF0IjoxNjQ2NjcwNjIzLCJqdGkiOiIwN2IxODFmNjdiMGY0ZjBlODhhMWE2NjRlMjBhMDgyNSIsInVzZXJfaWQiOjF9.vBRC48Zb-IiXXHEREiVI-9e8DS5ZT-gAH19S2uCZ0q4',
+ 'user': {'email': 'demouser@sagargajare.in',
+          'followers': 0,
+          'following': 0,
+          'pk': 1,
+          'username': 'demouser'}}
+```
+
+Pass Header as: Authorization: Bearer <access_token>
+
+Generating Access Token
+
+<br>
 **API Endpoints**
 
 - POST /api/authenticate should perform user authentication and return a JWT token.
